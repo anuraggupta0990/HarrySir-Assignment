@@ -1,0 +1,68 @@
+<div class="main_container">
+    <div class="form-container">
+      <form class="form" [formGroup]="createuserForm" (ngSubmit)="onSubmit()">
+        <h1>Create Customer</h1>
+        <div class="input_fields">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstname" placeholder="Enter your first name">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="createuserForm.get('firstname')?.hasError('required')">First Name is required</mat-error>
+            <mat-error *ngIf="createuserForm.get('firstname')?.hasError('pattern')">First Name cannot contain numbers</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastname" placeholder="Enter your last name">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="createuserForm.get('lastname')?.hasError('required')">Last Name is required</mat-error>
+            <mat-error *ngIf="createuserForm.get('lastname')?.hasError('pattern')">Last Name cannot contain numbers</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Enter your email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="createuserForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="createuserForm.get('email')?.hasError('pattern')">Enter a valid email</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Enter your password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="createuserForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="createuserForm.get('password')?.hasError('pattern')">Password must contain at least 8 characters</mat-error>
+            <mat-error *ngIf="createuserForm.get('password')?.hasError('minlength')">Password pattern is invalid</mat-error>
+  
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneno" placeholder="Enter your phone number" maxlength="10">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="createuserForm.get('phoneno')?.hasError('required')">Phone Number is required</mat-error>
+            <mat-error *ngIf="createuserForm.get('phoneno')?.hasError('pattern')">Enter a valid 10-digit phone number</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Designation</mat-label>
+            <input matInput formControlName="designation" placeholder="Enter your designation">
+            <mat-icon matSuffix>address</mat-icon>
+            <mat-error *ngIf="createuserForm.get('designation')?.hasError('required')">Designation is required</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message" placeholder="Enter your message"></textarea>
+          </mat-form-field>
+        </div>
+        <button type="submit" class="submitButton" [disabled]="createuserForm.invalid">Submit</button>
+        <a (click)="navigateToDashBoard()"><span>Back to Dashboard</span></a>
+      </form>
+      <div class="image-container">
+        <img src="https://cdn-lite.ip2location.com/img/sign-up.png">
+      </div>
+    </div>
+  </div>
+  

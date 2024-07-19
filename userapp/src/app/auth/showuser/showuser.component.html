@@ -1,0 +1,36 @@
+<div class="main_container">
+    <div class="user-list">
+      <h2>Registered Users</h2>
+      <div *ngIf="users.length > 0; else noUsers">
+        <table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <!-- <th>Password</th> -->
+              <th>Phone Number</th>
+              <th>Designation</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.email }}</td>
+              <!-- <td>{{ user.password }}</td> -->
+              <td>{{ user.phoneno }}</td>
+              <td>{{ user.designation }}</td>
+              <td>{{ user.message }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noUsers>
+        <p>No users registered yet.</p>
+      </ng-template>
+    </div>
+    <a (click)="navigateToLogin()"><span>Back to Dashboard</span></a>
+  </div>
+  

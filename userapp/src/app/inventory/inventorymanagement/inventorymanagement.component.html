@@ -1,0 +1,203 @@
+
+<div class="container">
+  <div class="filter-section">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter List</mat-label>
+      <input matInput #filterInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+    <mat-checkbox (change)="toggleSelected($event)">Hide Selected</mat-checkbox>
+    <mat-checkbox (change)="toggleUnSelected($event)">Hide Unselected</mat-checkbox>
+    <button mat-button [matMenuTriggerFor]="sortMenu">Sort</button>
+    <mat-menu #sortMenu="matMenu">
+      <button mat-menu-item (click)="sortTable('asc')">Ascending</button>
+      <button mat-menu-item (click)="sortTable('desc')">Descending</button>
+    </mat-menu>
+    <!-- <div class="action-section">
+      <button mat-button  (click)="downloadTableData()" color="primary">Download Data</button>
+    </div> -->
+    <div class="action-section">
+      <button mat-button (click)="downloadTableData()" color="primary">Download Data</button>
+      <button mat-button (click)="addToCart()" color="accent">Add to Cart</button>
+      <button mat-button (click)="viewCart()" color="warn">View Cart</button>
+    </div>
+  </div>
+  <div class="table_container">
+    <table mat-table [dataSource]="originalData" class="">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef> <mat-checkbox></mat-checkbox> </th>
+        <td mat-cell *matCellDef="let element"> <mat-checkbox [(ngModel)]="element.selected"></mat-checkbox> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="componentType">
+        <th mat-header-cell *matHeaderCellDef > Component Type </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-medium" >
+            <mat-select [(value)]="element.componentType" class="cell">
+              <mat-option *ngFor="let type of componentTypes" [value]="type">{{type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="componentName">
+        <th mat-header-cell *matHeaderCellDef> Component Name </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-medium">
+            <input matInput [(ngModel)]="element.componentName">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="make">
+        <th mat-header-cell *matHeaderCellDef> Make </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-medium">
+            <mat-select [(value)]="element.make">
+              <mat-option *ngFor="let make of makes" [value]="make">{{make}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="partNo">
+        <th mat-header-cell *matHeaderCellDef> Part No. </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-small">
+            <input matInput [(ngModel)]="element.partNo">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerPartNo">
+        <th mat-header-cell *matHeaderCellDef> Customer Part No. </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-medium">
+            <input matInput [(ngModel)]="element.customerPartNo">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="budgetLife">
+        <th mat-header-cell *matHeaderCellDef> Budget Life </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-small">
+            <input matInput type="number" [(ngModel)]="element.budgetLife">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="htmlColor">
+        <th mat-header-cell *matHeaderCellDef> HTML Color </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-small">
+              <mat-select placeholder="HTML Color" [(value)]="element.htmlColor">
+                <mat-option *ngFor="let color of htmlColors" [value]="color">{{color}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="maxCrackLength">
+        <th mat-header-cell *matHeaderCellDef> Max Crack Length </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-small">
+            <input matInput type="number" [(ngModel)]="element.maxCrackLength">
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="uom">
+        <th mat-header-cell *matHeaderCellDef> UOM </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-small">
+            <mat-select [(value)]="element.uom">
+              <mat-option *ngFor="let uom of uoms" [value]="uom">{{uom}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="crackSeverity">
+        <th mat-header-cell *matHeaderCellDef> Crack Severity </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field class="input-medium">
+            <mat-select [(value)]="element.crackSeverity">
+              <mat-option *ngFor="let severity of severities" [value]="severity">{{severity}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>  
+      </ng-container>
+      
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="deleteRow(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{filterInput.value}}"</td>
+      </tr>
+    </table>
+  </div>
+  <div class="add-component-section" [formGroup]="newComponentForm">
+    <mat-form-field appearance="outline" class="input-medium"  [class.error-border]="newComponentForm.get('componentType')?.invalid && newComponentForm.get('componentType')?.touched">
+      <mat-select placeholder="Component Type" formControlName="componentType">
+        <mat-option *ngFor="let type of componentTypes" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <button mat-button (click)="openDialog()">Add New Component Type</button> -->
+    <mat-form-field appearance="outline" class="input-large" [class.error-border]="newComponentForm.get('componentName')?.invalid && newComponentForm.get('componentName')?.touched">
+      <input matInput placeholder="Component Name" formControlName="componentName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-medium" [class.error-border]="newComponentForm.get('make')?.invalid && newComponentForm.get('make')?.touched">
+      <mat-select placeholder="Make" formControlName="make">
+        <mat-option *ngFor="let make of makes" [value]="make">{{make}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-medium" [class.error-border]="newComponentForm.get('partNo')?.invalid && newComponentForm.get('partNo')?.touched">
+      <input matInput placeholder="Part No." formControlName="partNo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-medium" [class.error-border]="newComponentForm.get('customerPartNo')?.invalid && newComponentForm.get('customerPartNo')?.touched">
+      <input matInput placeholder="Customer Part No." formControlName="customerPartNo">
+    </mat-form-field>
+    <mat-form-field  appearance="outline"class="input-medium" [class.error-border]="newComponentForm.get('budgetLife')?.invalid && newComponentForm.get('budgetLife')?.touched">
+      <input matInput type ="number" placeholder="budgetLife" formControlName="budgetLife">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-small" [class.error-border]="newComponentForm.get('htmlColor')?.invalid && newComponentForm.get('htmlColor')?.touched">
+      <mat-select placeholder="HTML Color" formControlName="htmlColor">
+        <mat-option *ngFor="let color of htmlColors" [value]="color">{{color}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-small" [class.error-border]="newComponentForm.get('maxCrackLength')?.invalid && newComponentForm.get('maxCrackLength')?.touched">
+      <input matInput type="number" placeholder="Max Crack Length" formControlName="maxCrackLength">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-small" [class.error-border]="newComponentForm.get('uom')?.invalid && newComponentForm.get('uom')?.touched">
+      <mat-select placeholder="UOM" formControlName="uom">
+        <mat-option *ngFor="let uom of uoms" [value]="uom">{{uom}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"class="input-medium" [class.error-border]="newComponentForm.get('crackSeverity')?.invalid && newComponentForm.get('crackSeverity')?.touched">
+      <mat-select placeholder="Crack Severity" formControlName="crackSeverity">
+        <mat-option *ngFor="let severity of severities" [value]="severity">{{severity}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="addComponent()">Add</button>
+  </div>
+  <div class="add-component-form">
+    <button mat-button (click)="openAddComponentTypeDialog()">New</button>
+      <button mat-raised-button color="primary" (click)="saveData()">Save</button>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="productdetail">
+    <form class="detailform" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h1 class="form-heading">Product Details</h1>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Component</mat-label>
+          <input matInput formControlName="component" required>
+          <mat-error *ngIf="form.controls['component'].hasError('component')">Component is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Observation Point</mat-label>
+          <input matInput formControlName="observationpoint" required>
+          <mat-error *ngIf="form.controls['observationpoint'].hasError('observationpoint')">Observation Point is required</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>OP Type</mat-label>
+          <input matInput formControlName="optype" required>
+          <mat-error *ngIf="form.controls['optype'].hasError('required')">OP Type is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>% Worm</mat-label>
+          <input matInput formControlName="worm" required>
+          <mat-error *ngIf="form.controls['worm'].hasError('required')">% Worm is required</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Crack Length</mat-label>
+          <mat-select formControlName="cracklength" required>
+            <mat-option value="cm">cm</mat-option>
+            <mat-option value="mm">mm</mat-option>
+            <mat-option value="m">m</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['cracklength'].hasError('required')">Crack Length is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Crack Measurement</mat-label>
+          <input matInput formControlName="crackmeasurement" required>
+          <mat-error *ngIf="form.controls['crackmeasurement'].hasError('required')">Crack Measurement is required</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Crack Severity</mat-label>
+          <mat-select formControlName="crackseverity" required>
+            <mat-option value="low">Low</mat-option>
+            <mat-option value="medium">Medium</mat-option>
+            <mat-option value="critical">Critical</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['crackseverity'].hasError('required')">Crack Severity is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Starting Dim</mat-label>
+          <input matInput formControlName="startingdim" required>
+          <mat-error *ngIf="form.controls['startingdim'].hasError('required')">Starting Dim is required</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Used Limit</mat-label>
+          <input matInput formControlName="usedlimit" required>
+          <mat-error *ngIf="form.controls['usedlimit'].hasError('required')">Used Limit is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Budget Life</mat-label>
+          <input matInput formControlName="budgetlife" required>
+          <mat-error *ngIf="form.controls['budgetlife'].hasError('required')">Budget Life is required</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Life Hours</mat-label>
+          <input matInput formControlName="lifehours" required>
+          <mat-error *ngIf="form.controls['lifehours'].hasError('required')">Life Hours is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Life Total Projected</mat-label>
+          <input matInput formControlName="lifetotal" required>
+          <mat-error *ngIf="form.controls['lifetotal'].hasError('required')">Life Total Projected is required</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Inspection Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="inspectionDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.controls['inspectionDate'].hasError('required')">Inspection Date is required</mat-error>
+        </mat-form-field>
+        <div class="half-width">
+          <mat-label>Upload Image</mat-label>
+          <input type="file" formControlName="imageFile" (change)="onFileChange($event)" accept="image/*" required>
+          <mat-error *ngIf="!imageValid">Image is required</mat-error>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <button mat-raised-button color="warn" class="cancel-button" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" class="submit-button">Save</button>
+      </div>
+    </form>
+  </div>
+  

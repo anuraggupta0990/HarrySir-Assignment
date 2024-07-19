@@ -1,0 +1,75 @@
+.productdetail {
+    max-width: 900px;
+    margin: 15px auto;
+    padding: 30px;
+    background: radial-gradient(#ffffffd8, #a9e0e7d5);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  /* #ffb561, #c5ffe6 */
+  .detailform {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-heading {
+    /* color: #ffffff; */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .half-width {
+    width: calc(50% - 10px); 
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .submit-button, .cancel-button {
+    width: 100%;
+    max-width: 150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+  }
+  
+  button:disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+  }
+  
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+    }
+    .half-width {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  

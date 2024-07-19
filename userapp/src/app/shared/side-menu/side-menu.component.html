@@ -1,0 +1,60 @@
+<div class="side-menu" [class.open]="isMenuOpen">
+
+    <ul>
+      <li (click)="toggleSubMenu('menu1')">
+        <mat-icon>person</mat-icon>
+        <span *ngIf="isMenuOpen">Customers</span>
+      </li>
+      <ul *ngIf="openSubMenu === 'menu1'" class="submenu">
+        <li (click)="navigateTocreatecustomer()">
+          <mat-icon>add</mat-icon>
+          <span *ngIf="isMenuOpen">Create</span>
+        </li>
+        <li (click)="navigateToshowcustomer()">
+          <mat-icon>visibility</mat-icon>
+          <span *ngIf="isMenuOpen">View</span>
+        </li>
+        <li>
+          <mat-icon>edit</mat-icon>
+          <span *ngIf="isMenuOpen">Update</span>
+        </li>
+      </ul>
+      <li (click)="toggleSubMenu('menu2')">
+        <mat-icon>inventory</mat-icon>
+        <span *ngIf="isMenuOpen">Inventory</span>
+      </li>
+      <ul *ngIf="openSubMenu === 'menu2'" class="submenu">
+        <li (click)="navigateToInventoryManagement()">
+          <mat-icon>add</mat-icon>
+          <span *ngIf="isMenuOpen">Create Inventory</span>
+        </li>
+        <li (click)="navigateToProductForm()">
+          <mat-icon>inventory</mat-icon>
+          <span *ngIf="isMenuOpen">Product Form</span>
+        </li>
+        <li>
+          <mat-icon>edit</mat-icon>
+          <span *ngIf="isMenuOpen">Update</span>
+        </li>
+      </ul>
+      <li (click)="toggleSubMenu('menu3')">
+        <mat-icon>expand_more</mat-icon>
+        <span *ngIf="isMenuOpen">Item 3</span>
+      </li>
+      <ul *ngIf="openSubMenu === 'menu3'" class="submenu">
+        <li>
+          <mat-icon>add</mat-icon>
+          <span *ngIf="isMenuOpen">Create</span>
+        </li>
+        <li>
+          <mat-icon>visibility</mat-icon>
+          <span *ngIf="isMenuOpen">View</span>
+        </li>
+        <li>
+          <mat-icon>edit</mat-icon>
+          <span *ngIf="isMenuOpen">Update</span>
+        </li>
+      </ul>
+    </ul>
+  </div>
+  

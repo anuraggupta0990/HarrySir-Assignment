@@ -1,0 +1,27 @@
+<!-- <router-outlet></router-outlet> -->
+<!-- <div>
+    <div class="col-sm-12"> header</div>
+    <div class="col-sm-4">Side menu</div>
+    <div class="col-sm-8"> Main Body <router-outlet></router-outlet></div>
+    <div class="col-sm-12">Footer</div>
+</div> -->
+<!-- <div>
+    <app-header *ngIf="showHeaderAndMenu" class="col-sm-12"></app-header>
+    <app-side-menu *ngIf="showHeaderAndMenu" class="col-sm-4"></app-side-menu>
+    <div [class.col-sm-12]="!showHeaderAndMenu" [class.col-sm-8]="showHeaderAndMenu">
+    
+      <router-outlet></router-outlet>
+    </div>  -->
+    <!-- <div class="col-sm-12">Footer</div> -->
+  <div class="dashboard-container">
+    <app-header *ngIf="showHeaderAndMenu" (menuToggle)="toggleMenu()" ></app-header>
+    <div class="content">
+      <app-side-menu *ngIf="showHeaderAndMenu" [class.open]="isMenuOpen"></app-side-menu>
+  
+       <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,20 @@
+<div class="navbar">
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+   
+    
+  </div>
+  <div class="logo">
+    <img src="https://www.smartdatainc.com/wp-content/themes/smartdata/assets/new_pages/06/img/logo.svg" alt="user logo">
+  </div>
+  <div class="user-profile" (click)="toggleUserProfileMenu()">
+    <img src="assets/pic1.jpg" alt="User Profile">
+    <div class="dropdown" *ngIf="isUserProfileMenuOpen">
+      <ul>
+        <li (click)="navigateToShowUser()">Show User</li>
+        <li (click)="navigateToUpdateUser()">Update User</li>
+        <li (click)="logout()">Logout</li>
+      </ul>
+    </div>
+  </div>
+</div>

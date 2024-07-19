@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Young+Serif&display=swap");
+
+.side-menu {
+ height: 100vh;
+  width: 160px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  /* box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1); */
+  /* border-radius: 10px; */
+  /* margin-right: 20px; */
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.side-menu.open {
+  width: 280px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu li {
+  margin: 10px 0;
+  font-size: 1.125rem;
+  color: #1a73e8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.side-menu li mat-icon {
+  margin-right: 10px;
+}
+
+.side-menu li span {
+  display: none;
+}
+
+.side-menu.open li span {
+  display: inline;
+}
+
+.side-menu li:hover {
+  color: #42cdf4;
+  transform: translateX(5px);
+}
+
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 20px;
+}
+
+.submenu li {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #1a73e8;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.submenu li mat-icon {
+  margin-right: 10px;
+}
+
+.submenu li span {
+  display: none;
+}
+
+.side-menu.open .submenu li span {
+  display: inline;
+}
+
+.submenu li:hover {
+  color: #42cdf4;
+  transform: translateX(5px);
+}

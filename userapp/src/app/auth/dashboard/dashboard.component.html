@@ -1,0 +1,180 @@
+<!--  
+<div class="dashboard-container">
+  <div class="navbar">
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </div>
+    <div class="logo">
+      <img src="https://www.smartdatainc.com/wp-content/themes/smartdata/assets/new_pages/06/img/logo.svg" alt="user logo">
+    </div>
+    <div class="user-profile" (click)="toggleUserProfileMenu()">
+      <img src="assets/pic1.jpg" alt="User Profile">
+      <div class="dropdown" *ngIf="isUserProfileMenuOpen">
+        <ul>
+          <li (click)="navigateToShowUser()">Show User</li>
+          <li (click)="navigateToUpdateUser()">Update User</li>
+          <li (click)="logout()">Logout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="side-menu" [class.open]="isMenuOpen">
+      <ul>
+        <li (click)="toggleSubMenu('menu1')">
+          <mat-icon>person</mat-icon>
+          <span *ngIf="isMenuOpen">Customers</span>
+        </li>
+        <ul *ngIf="openSubMenu === 'menu1'" class="submenu">
+          <li (click)="navigateTocreatecustomer()">
+            <mat-icon>add</mat-icon>
+            <span *ngIf="isMenuOpen">Create</span>
+          </li>
+          <li (click)="navigateToshowcustomer()">
+            <mat-icon>visibility</mat-icon>
+            <span *ngIf="isMenuOpen">View</span>
+          </li>
+          <li>
+            <mat-icon>edit</mat-icon>
+            <span *ngIf="isMenuOpen">Update</span>
+          </li>
+        </ul>
+        <li (click)="toggleSubMenu('menu2')">
+          <mat-icon>inventory</mat-icon>
+          <span *ngIf="isMenuOpen">Inventory</span>
+        </li>
+        <ul *ngIf="openSubMenu === 'menu2'" class="submenu">
+          <li (click)="navigateToInventoryManagement()">
+            <mat-icon>add</mat-icon>
+            <span *ngIf="isMenuOpen">Create Inventory</span>
+          </li>
+          <li (click)="navigateToProductForm()">
+            <mat-icon>inventory</mat-icon>
+            <span *ngIf="isMenuOpen">Product Form</span>
+          </li>
+          <li>
+            <mat-icon>edit</mat-icon>
+            <span *ngIf="isMenuOpen">Update</span>
+          </li>
+        </ul>
+        <li (click)="toggleSubMenu('menu3')">
+          <mat-icon>expand_more</mat-icon>
+          <span *ngIf="isMenuOpen">Item 3</span>
+        </li>
+        <ul *ngIf="openSubMenu === 'menu3'" class="submenu">
+          <li>
+            <mat-icon>add</mat-icon>
+            <span *ngIf="isMenuOpen">Create</span>
+          </li>
+          <li>
+            <mat-icon>visibility</mat-icon>
+            <span *ngIf="isMenuOpen">View</span>
+          </li>
+          <li>
+            <mat-icon>edit</mat-icon>
+            <span *ngIf="isMenuOpen">Update</span>
+          </li>
+        </ul>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="dashboard-container">
+  <div class="navbar">
+    <div class="logo">
+      <img src="https://www.smartdatainc.com/wp-content/themes/smartdata/assets/new_pages/06/img/logo.svg" alt="user logo">
+    </div>
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </div>
+    <div class="user-profile" (click)="toggleUserProfileMenu()">
+      <img src="assets/pic1.jpg" alt="User Profile">
+      <div class="dropdown" *ngIf="isUserProfileMenuOpen">
+        <ul>
+          <li (click)="navigateToShowUser()">Show User</li>
+          <li (click)="navigateToUpdateUser()">Update User</li>
+          <li (click)="logout()">Logout</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="side-menu" [class.open]="isMenuOpen">
+      <ul>
+        <li (click)="toggleSubMenu('menu1')">
+          <mat-icon>expand_more</mat-icon> Customers
+        </li>
+        <ul *ngIf="openSubMenu === 'menu1'" class="submenu">
+          <li (click)="navigateTocreatecustomer()">Create</li>
+          <li (click)="navigateToshowcustomer()">View</li>
+          <li>Update</li>
+        </ul>
+        <li (click)="toggleSubMenu('menu2')">
+          <mat-icon>expand_more</mat-icon> InventoryManagement
+        </li>
+        <ul *ngIf="openSubMenu === 'menu2'" class="submenu">
+          <li (click)="navigateToInventoryManagement()">Create Inventory</li>
+          <li (click)="navigateToProductForm()">Product Form</li>
+          <li>Update</li>
+        </ul>
+        <li (click)="toggleSubMenu('menu3')">
+          <mat-icon>expand_more</mat-icon> Item 3
+        </li>
+        <ul *ngIf="openSubMenu === 'menu3'" class="submenu">
+          <li>Create</li>
+          <li>View</li>
+          <li>Update</li>
+        </ul>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="main-content">
+    
+      <!-- <p>This is your main content area.</p> -->
+       <!-- <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-header></app-header>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <app-sidebar></app-sidebar>
+     </div> 
+    <div class="col-sm-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      Footer
+    </div>
+  </div>
+</div> -->
